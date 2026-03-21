@@ -3,6 +3,7 @@
     "builder": "NIXPACKS",
     "nixpacksConfig": {
       "phpVersion": "8.2"
-    }
+    },
+    "buildCommand": "composer install --no-dev --no-scripts && npm install && npm run build"
   }
 }
