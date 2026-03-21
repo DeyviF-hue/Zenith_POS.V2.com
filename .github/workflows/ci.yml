@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  laravel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --prefer-dist
+      - name: Run PHP lint and tests
+        run: |
+          ./vendor/bin/phpcs --standard=PSR12 app tests
+          ./vendor/bin/phpunit
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install NPM deps and build assets
+        run: |
+          npm ci
+          npm run tailwind:build || true
+      - name: Build frontend assets
+        run: npm run build --if-present || true

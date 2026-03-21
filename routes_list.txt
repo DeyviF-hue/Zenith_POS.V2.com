@@ -1,0 +1,68 @@
+
+  GET|HEAD        / .............................................................. admin.index ??? AdminController@index
+  POST            _ignition/execute-solution ignition.executeSolution ??? Spatie\LaravelIgnition ??? ExecuteSolutionContr???
+  GET|HEAD        _ignition/health-check ....... ignition.healthCheck ??? Spatie\LaravelIgnition ??? HealthCheckController
+  POST            _ignition/update-config .... ignition.updateConfig ??? Spatie\LaravelIgnition ??? UpdateConfigController
+  POST            adminlte/darkmode/toggle adminlte.darkmode.toggle ??? JeroenNoten\LaravelAdminLte ??? DarkModeControlle???
+  GET|HEAD        api/user ........................................................................................... 
+  GET|HEAD        cliente .................................................... cliente.index ??? ClienteController@index
+  POST            cliente .................................................... cliente.store ??? ClienteController@store
+  GET|HEAD        cliente/create ........................................... cliente.create ??? ClienteController@create
+  GET|HEAD        cliente/{cliente} ............................................ cliente.show ??? ClienteController@show
+  PUT|PATCH       cliente/{cliente} ........................................ cliente.update ??? ClienteController@update
+  DELETE          cliente/{cliente} ...................................... cliente.destroy ??? ClienteController@destroy
+  GET|HEAD        cliente/{cliente}/edit ....................................... cliente.edit ??? ClienteController@edit
+  POST            clientes ................................................... cliente.store ??? ClienteController@store
+  GET|HEAD        configuracion/apariencia ............. configuracion.apariencia ??? ConfiguracionController@apariencia
+  POST            configuracion/apariencia configuracion.apariencia.guardar ??? ConfiguracionController@guardarAparienc???
+  GET|HEAD        configuracion/modulos ...................... configuracion.modulos ??? ConfiguracionController@modulos
+  POST            configuracion/modulos/toggle ... configuracion.modulos.toggle ??? ConfiguracionController@toggleModulo
+  GET|HEAD        configuracion/sistema ...................... configuracion.sistema ??? ConfiguracionController@sistema
+  GET|HEAD        configuracion/usuarios ................... configuracion.usuarios ??? ConfiguracionController@usuarios
+  GET|HEAD        empleado ................................................. empleado.index ??? EmpleadoController@index
+  POST            empleado ................................................. empleado.store ??? EmpleadoController@store
+  GET|HEAD        empleado/create ........................................ empleado.create ??? EmpleadoController@create
+  GET|HEAD        empleado/ventas-empleado ............ empleado.ventas_empleado ??? ReporteController@ventasPorEmpleado
+  GET|HEAD        empleado/{empleado} ........................................ empleado.show ??? EmpleadoController@show
+  PUT|PATCH       empleado/{empleado} .................................... empleado.update ??? EmpleadoController@update
+  DELETE          empleado/{empleado} .................................. empleado.destroy ??? EmpleadoController@destroy
+  GET|HEAD        empleado/{empleado}/edit ................................... empleado.edit ??? EmpleadoController@edit
+  GET|HEAD        home ................................................................... home ??? HomeController@index
+  GET|HEAD        login ................................................... login ??? Auth\LoginController@showLoginForm
+  POST            login ................................................................... Auth\LoginController@login
+  POST            logout ........................................................ logout ??? Auth\LoginController@logout
+  GET|HEAD        password/confirm ................. password.confirm ??? Auth\ConfirmPasswordController@showConfirmForm
+  POST            password/confirm ............................................ Auth\ConfirmPasswordController@confirm
+  POST            password/email ................... password.email ??? Auth\ForgotPasswordController@sendResetLinkEmail
+  GET|HEAD        password/reset ................ password.request ??? Auth\ForgotPasswordController@showLinkRequestForm
+  POST            password/reset ................................ password.update ??? Auth\ResetPasswordController@reset
+  GET|HEAD        password/reset/{token} ................. password.reset ??? Auth\ResetPasswordController@showResetForm
+  GET|HEAD        producto ................................................. producto.index ??? ProductoController@index
+  POST            producto ................................................. producto.store ??? ProductoController@store
+  GET|HEAD        producto/create ........................................ producto.create ??? ProductoController@create
+  GET|HEAD        producto/{producto} ........................................ producto.show ??? ProductoController@show
+  PUT|PATCH       producto/{producto} .................................... producto.update ??? ProductoController@update
+  DELETE          producto/{producto} .................................. producto.destroy ??? ProductoController@destroy
+  GET|HEAD        producto/{producto}/edit ................................... producto.edit ??? ProductoController@edit
+  GET|HEAD        proveedor .............................................. proveedor.index ??? ProveedorController@index
+  POST            proveedor .............................................. proveedor.store ??? ProveedorController@store
+  GET|HEAD        proveedor/create ..................................... proveedor.create ??? ProveedorController@create
+  GET|HEAD        proveedor/{proveedor} .................................... proveedor.show ??? ProveedorController@show
+  PUT|PATCH       proveedor/{proveedor} ................................ proveedor.update ??? ProveedorController@update
+  DELETE          proveedor/{proveedor} .............................. proveedor.destroy ??? ProveedorController@destroy
+  GET|HEAD        proveedor/{proveedor}/edit ............................... proveedor.edit ??? ProveedorController@edit
+  GET|HEAD        register ................................... register ??? Auth\RegisterController@showRegistrationForm
+  POST            register .......................................................... Auth\RegisterController@register
+  GET|HEAD        sanctum/csrf-cookie .............. sanctum.csrf-cookie ??? Laravel\Sanctum ??? CsrfCookieController@show
+  POST            venta .......................................................... venta.store ??? VentaController@store
+  GET|HEAD        venta .......................................................... venta.index ??? VentaController@index
+  GET|HEAD        venta/create ................................................. venta.create ??? VentaController@create
+  GET|HEAD        venta/{ventum} ................................................... venta.show ??? VentaController@show
+  PUT|PATCH       venta/{ventum} ............................................... venta.update ??? VentaController@update
+  DELETE          venta/{ventum} ............................................. venta.destroy ??? VentaController@destroy
+  GET|HEAD        venta/{ventum}/edit .............................................. venta.edit ??? VentaController@edit
+  GET|HEAD        ventas/historial ....................................... venta.historial ??? VentaController@historial
+  GET|HEAD        ventas/mes ................................................... venta.mes ??? VentaController@ventasMes
+
+                                                                                                   Showing [64] routes
+

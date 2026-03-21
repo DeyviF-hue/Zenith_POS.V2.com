@@ -1,0 +1,1 @@
+@include('vr-inventario.create')
