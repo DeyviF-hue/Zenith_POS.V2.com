@@ -12,9 +12,6 @@ use App\Http\Controllers\VentasRapidasController;
 use App\Http\Controllers\VrInventarioController;
 use Illuminate\Support\Facades\Auth;
 
-
-
-
 Auth::routes();
  //Rutas cliente y login
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -78,3 +75,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('configuracion')->name('config
     Route::get('/usuarios',            [ConfiguracionController::class, 'usuarios'])->name('usuarios'); // also matches developer because of CheckRole bypass
 });
 
+Route::get('/instalar-magicamente', function () {
+    try {
+        \Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
+        return "¡TABLAS Y USUARIO ADMIN CREADOS CON ÉXITO! Acabas de inyectar la Base de Datos. Vuelve a la página principal de tu sistema para iniciar sesión.";
+    } catch (\Exception $e) {
+        return "Error detectado: " . $e->getMessage();
+    }
+});
