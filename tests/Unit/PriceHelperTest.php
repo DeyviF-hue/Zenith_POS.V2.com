@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Unit;
+
 use App\Helpers\PriceHelper;
 use PHPUnit\Framework\TestCase;
 

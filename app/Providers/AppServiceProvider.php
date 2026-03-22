@@ -23,9 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Load dynamically from database if tables exist
-        if (Schema::hasTable('system_modules')) {
-            try {
+        try {
+            // Load dynamically from database if tables exist
+            if (Schema::hasTable('system_modules')) {
                 $modules = SystemModule::all();
                 foreach ($modules as $module) {
                     config(["modulos.{$module->module_key}" => [
@@ -35,20 +35,18 @@ class AppServiceProvider extends ServiceProvider
                         'descripcion' => $module->description,
                     ]]);
                 }
-            } catch (\Exception $e) {
-                // Ignore exception if running without DB connection
             }
-        }
 
-        if (Schema::hasTable('system_settings')) {
-            try {
+            if (Schema::hasTable('system_settings')) {
                 $settings = SystemSetting::all();
                 foreach ($settings as $setting) {
                     config(["zenith.{$setting->key}" => $setting->value]);
                 }
-            } catch (\Exception $e) {
-                // Ignore
             }
+        } catch (\Exception $e) {
+            // Se ignora la excepción porque durante el comando de compilación
+            // (por ejemplo `php artisan package:discover` en Docker/Railway)
+            // aún no hay conexión a base de datos.
         }
         
         if (app()->environment('production')) {
