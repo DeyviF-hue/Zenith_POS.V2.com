@@ -77,9 +77,27 @@ Route::middleware(['auth', 'role:admin'])->prefix('configuracion')->name('config
 
 Route::get('/instalar-magicamente', function () {
     try {
-        \Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
-        return "¡TABLAS Y USUARIO ADMIN CREADOS CON ÉXITO! Acabas de inyectar la Base de Datos. Vuelve a la página principal de tu sistema para iniciar sesión.";
+        // Ejecutar las migraciones
+        \Artisan::call('migrate', ['--force' => true]);
+        
+        // Crear el Rol de Administrador
+        $role = \App\Models\Role::firstOrCreate(
+            ['name' => 'admin'],
+            ['description' => 'Administrador Total']
+        );
+        
+        // Crear el Usuario Admin
+        \App\Models\User::firstOrCreate(
+            ['email' => 'admin@admin.com'],
+            [
+                'name' => 'Administrador Maestro',
+                'password' => \Hash::make('password'),
+                'role_id' => $role->id,
+            ]
+        );
+
+        return "¡YAAAA! Base de datos de Railway inyectada y cargada exitosamente. <br><br> Usuario: admin@admin.com <br> Clave: password <br><br> Regresa a la página oficial e inicia sesión.";
     } catch (\Exception $e) {
-        return "Error detectado: " . $e->getMessage();
+        return "Hubo un error inyectando los datos de prueba: " . $e->getMessage();
     }
 });
